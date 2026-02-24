@@ -1,0 +1,180 @@
+@extends('layouts')
+@section('title','contact')
+@section('content')
+        <div class="relative ">
+            <div class="max-w-7xl ">
+                <div class="title">
+                     <h1>Contact page</h1>
+                </div>
+                <div class="m">
+                      <p>This is the contact page</p>
+                </div>
+            </div>
+        </div>
+@endsection
+------------------------------------------------------------------------------
+@extends('layouts')
+@section('title','About')
+@section('content')
+<div class="relative ">
+    <div class="max-w-7xl ">
+        <div class="title">
+        <h1>About us</h1>
+        </div>
+    <div class="m">
+        <p>This is the about page</p>
+    </div>
+    </div>
+</div>
+@endsection
+--------------------------------------------------------------------------------
+//RESOURCES
+/*Route::resource('guitars',GuitarsController::class);
+//////////////////////////////////////////////////
+Route::get('/',[HomeController::class,'index'])->name('home.index');
+Route::get('/about',[HomeController::class,'about'])->name('home.about');
+Route::get('/contact',[HomeController::class,'contact'])->name('home.contact');
+Route::get('/', function () {
+    return view('welcome');
+});
+//ROUTES URL PARAM
+Route::get('/store/{category?}/{item?}',function($category=null,$item=null){
+     if(isset($category)){
+        if(isset($item)){
+            return "you are viewing the store for {$category} for {$item}";
+        }
+        return "you are viewing the store for ".strip_tags($category);
+     }
+     return 'you are viewing all the instruments';
+});
+//SIMPLE PARAMETRES QUERY
+Route::get('/store',function(){
+     $category=request('category');
+     if(isset($category)){
+        return 'you are viewing the store for '.strip_tags($category);
+     }
+     return 'you are viewing all instruments';
+});
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';*/
+---------------------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="{{url('css/site.css')}}">
+</head>
+<body>
+<div class="list">
+   @if(count($tasks)>0)
+     @foreach($tasks as $task)
+       <table border="2">
+         <tr><th>Id task</th><th>Task name</th><th>Description Task</th></tr>
+        <tr>
+          <td>{{$task['id_task']}}</td>
+          <td>{{$task['task_name']}}</td>
+          <td>{{$task['description_task']}}</td>
+        </tr>
+       </table>
+      @endforeach
+   @else
+   <h2>There is no task</h2>
+   @endif
+</div>
+</body>
+</html>
+---------------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Tasks</title>
+   <link rel="stylesheet" href="{{url('css/site.css')}}">
+</head>
+<body>
+   <form class="task" method="POST" action="{{route('tasks.store')}}" >
+      @csrf
+      Id task:<br/><input type="text" name="idtask"/><br/>
+      Name Task:<br/><input type="text" name="task_name" /><br/>
+      Description Task:<br/><input type="text" name="descr_task" /><br/>
+      <button type="submit">Add Task</button>
+   </form>
+</body>
+</html>
+-----------------------------------------------------------------------------------
+    $request->validate([
+            'idtask'=>'required',
+            'task_name'=>'required',
+            'descr_task'=>'required'
+        ]);
+
+        $task=[
+            'id_task'=>$request->input("idtask"),
+            'task_name'=>$request->input('task_name'),
+            'description_task'=>$request->input('descr_task')
+        ];
+
+        session()->push('tasks',$task);
+        
+        return redirect()->route('tasks.index');
+-------------------------------------------------------------------------
+$tasks=session('tasks',[]);
+        
+        return view('listtask',['tasks'=>$tasks]);
+
+///////////////////////////////////////////:::
+Route::get('/',function(){
+      return view('tasks');
+});
+Route::resource('tasks',TasksController::class);
+
+-------------------------------------------------------
+<button type="button" onclick="window.location.href='{{route('tasks.index')}}'" class="btn">Task List</button>
+---------------------------------------------------------------------------------------------
+//RESOURCES
+/*Route::resource('guitars',GuitarsController::class);
+//////////////////////////////////////////////////
+Route::get('/',[HomeController::class,'index'])->name('home.index');
+Route::get('/about',[HomeController::class,'about'])->name('home.about');
+Route::get('/contact',[HomeController::class,'contact'])->name('home.contact');
+Route::get('/', function () {
+    return view('welcome');
+});
+//ROUTES URL PARAM
+Route::get('/store/{category?}/{item?}',function($category=null,$item=null){
+     if(isset($category)){
+        if(isset($item)){
+            return "you are viewing the store for {$category} for {$item}";
+        }
+        return "you are viewing the store for ".strip_tags($category);
+     }
+     return 'you are viewing all the instruments';
+});
+//SIMPLE PARAMETRES QUERY
+Route::get('/store',function(){
+     $category=request('category');
+     if(isset($category)){
+        return 'you are viewing the store for '.strip_tags($category);
+     }
+     return 'you are viewing all instruments';
+});
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
