@@ -1,0 +1,135 @@
+.architecture-page {
+  padding-bottom: 5rem;
+  color: var(--text-main);
+}
+
+.architecture-header {
+  height: 300px;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../../assets/ArchiSection1.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.architecture-header h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.archi-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 85%;
+  margin: 6rem auto;
+  gap: 4rem;
+  align-items: center;
+}
+
+.archi-section img {
+  width: 100%;
+  border-radius: 2rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  border: 1px solid var(--glass-border);
+}
+
+.archi-section .content {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+.archi-section.reverse {
+  direction: rtl;
+}
+
+.archi-section.reverse .content {
+  direction: ltr;
+}
+
+.archi-section.reverse img {
+  direction: ltr;
+}
+
+.avis-header {
+  text-align: center;
+  margin: 6rem 0 3rem;
+}
+
+.avis-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.clients-slider {
+  width: 85%;
+  margin: 0 auto 6rem;
+}
+
+.feedback-card {
+  padding: 2.5rem;
+  margin: 1rem;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--glass-border);
+}
+
+.feedback-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.feedback-header h6 {
+  margin: 0;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.feedback-text {
+  font-style: italic;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.demande-section {
+  width: 85%;
+  margin: 6rem auto;
+  padding: 4rem;
+  text-align: center;
+}
+
+.demande-section form {
+  max-width: 800px;
+  margin: 3rem auto 0;
+  text-align: left;
+}
+
+@media (max-width: 1100px) {
+  .archi-section {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+  .archi-section.reverse {
+    direction: ltr;
+  }
+}
+
+@media (max-width: 768px) {
+  .architecture-header h1 {
+    font-size: 2.2rem;
+    padding: 0 1rem;
+  }
+  .demande-section {
+    padding: 2rem;
+  }
+}

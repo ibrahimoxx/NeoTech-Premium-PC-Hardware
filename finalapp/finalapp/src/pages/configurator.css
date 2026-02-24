@@ -1,0 +1,115 @@
+.configurator-page {
+  padding: 4rem 5%;
+}
+
+.config-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.config-grid {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 3rem;
+  align-items: start;
+}
+
+.config-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.config-step {
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.step-number {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 6rem;
+  font-weight: 900;
+  opacity: 0.03;
+  color: white;
+}
+
+.component-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.option-card {
+  padding: 1.5rem;
+  cursor: pointer;
+  border: 1px solid var(--glass-border);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.option-card:hover {
+  border-color: var(--primary);
+  background: rgba(99, 102, 241, 0.04);
+  transform: translateY(-4px);
+}
+
+.option-card.active {
+  background: rgba(79, 70, 229, 0.08);
+  border-color: var(--primary);
+  box-shadow: 0 0 25px rgba(79, 70, 229, 0.15);
+}
+
+.option-card h6 {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--text-main);
+}
+
+.specs-detail {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.selection-summary-item {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--glass-border);
+  color: var(--text-main);
+}
+
+.selection-summary-item .small {
+  color: var(--text-main);
+  opacity: 0.9;
+}
+
+.selection-summary-item .text-muted {
+  color: var(--text-muted) !important;
+  opacity: 1;
+}
+
+.config-sidebar {
+  position: sticky;
+  top: 120px;
+  padding: 2.5rem;
+  color: var(--text-main);
+}
+
+.total-bar {
+  border-top: 1px solid var(--glass-border);
+  margin-top: 2rem;
+  padding-top: 2rem;
+}
+
+@media (max-width: 992px) {
+  .config-grid {
+    grid-template-columns: 1fr;
+  }
+}

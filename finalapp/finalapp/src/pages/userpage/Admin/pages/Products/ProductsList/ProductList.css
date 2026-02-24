@@ -1,0 +1,22 @@
+.ProductsList {
+  width: 95%;
+  height: 100%;
+  margin: auto;
+  border-radius: 10px;
+  display: flex;
+}
+
+.ProductsListHeader {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+}
+
+.ProductsListHeader .ProductsListSearchBar {
+  margin-left: 10px;
+}
+
+.ProductsListHeader .ProductsListSearchBar input {
+  width: 400px;
+}
